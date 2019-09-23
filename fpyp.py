@@ -3,7 +3,7 @@ import ssl
 import requests
 from urllib.request import urlopen
 from urllib.request import urlretrieve
-from mutagen.mp3 import MP3
+#from mutagen.mp3 import MP3
 from bs4 import BeautifulSoup
 import re
 import os
@@ -54,7 +54,7 @@ if(1):
 
 #                audio = MP3(str(audio_link))
 #                print(audio.info.length)
-                audiofile = AudioFileClip(url)
+#                audiofile = AudioFileClip(url)
             time_stamp=re.findall(r",n=\"(.+?)\"",line)
             if(time_stamp):
                 time_local=time.localtime(int(time_stamp[0]))
