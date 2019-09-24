@@ -22,6 +22,8 @@ r= requests.get(
     "https://mp.weixin.qq.com/s/V6LfeY6Mki8VDyFYyfud2Q"
 )
 htmls=r.text
+
+
 soup =BeautifulSoup(htmls,'lxml')
 #ttt=soup.find_all('p',{'style':'white-space: normal;line-height: 25.6px;max-width: 100%;min-height: 1em;box-sizing: border-box !important;word-wrap: break-word !important;'})
 ttt=soup.find_all('a',{'data-linktype':'2'})
@@ -29,12 +31,29 @@ ttt=soup.find_all('a',{'data-linktype':'2'})
 for t in ttt:
     link = t.get('href')
     print(link)
-    link_href='<a href="'+link+'"'
+    link_href=' <a href="'+link
     print(link_href)
     print(html.unescape(htmls))
-#    patten = re.compile(r">[0-9][0-9][0-9]+link_href")
+    patten = re.compile(r'[0-9]{2,5}(%s)(.+?)' %link_href)
+    #    patten = re.compile(r'((/|.)*html)')
+    number=patten.search(html.unescape(htmls))
 #    print(patten)
-    number = re.findall('[0-9][0-9][0-9]\D%s'%link_href,html.unescape(htmls))
+    number = re.findall('[0-9]{3,}%s(.+?)' %link_href,html.unescape(htmls))
 
     print(number)
+    """
+    url = "oreilly.com"
+    regex3 = re.compile(r"^((/|.)*(%s))" % url)
+    regex4 = re.compile(r"^((/|.)*oreilly.com)")
+    regex5 = re.compile(r"^((/|.)*" + url + ')')
+
+    string3 = '/oreilly.com/baidu.com'
+
+    mo3 = regex3.search(string3)
+    mo4 = regex4.search(string3)
+    mo5 = regex5.search(string3)
+    print(mo3.group())
+    print(mo4.group())
+    print(mo5.group())
+    """
     break
