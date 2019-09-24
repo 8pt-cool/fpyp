@@ -10,6 +10,9 @@ import os
 import time
 import html
 
+
+
+
 rss='fpyp.rss'
 head='channel_info.txt'
 if (os.path.exists(rss)):
@@ -26,22 +29,27 @@ htmls=r.text
 
 soup =BeautifulSoup(htmls,'lxml')
 #ttt=soup.find_all('p',{'style':'white-space: normal;line-height: 25.6px;max-width: 100%;min-height: 1em;box-sizing: border-box !important;word-wrap: break-word !important;'})
-ttt=soup.find_all('a',{'data-linktype':'2'})
-#print(ttt)
+#ttt=soup.find_all('a',{'data-linktype':'2'})
+ttt=soup.find_all('span',{'style':'max-width: 100%;white-space: pre-wrap;font-size: 14px;box-sizing: border-box !important;word-wrap: break-word !important;'})
+for t in(ttt):
+    print(t)
+"""
 for t in ttt:
     link = t.get('href')
     print(link)
     link_href=' <a href="'+link
     print(link_href)
-    print(html.unescape(htmls))
-    patten = re.compile(r'[0-9]{2,5}(%s)(.+?)' %link_href)
+
+    patten = re.compile(r'[0-9]{2,5}(%s)(.*)' %link_href)
     #    patten = re.compile(r'((/|.)*html)')
     number=patten.search(html.unescape(htmls))
 #    print(patten)
+    htmls = '<p style="font-size: 16px;line-height: 25.6000003814697px;white-space: normal;max-width: 100%;min-height: 1em;color: rgb(62, 62, 62);box-sizing: border-box !important;word-wrap: break-word !important;background-color: rgb(255, 255, 255);"><span style="max-width: 100%;white-space: pre-wrap;font-size: 14px;box-sizing: border-box !important;word-wrap: break-word !important;">001 <a href="http://mp.weixin.qq.com/s?__biz=MzIxMTMzNTc5OA==&amp;mid=2247483656&amp;idx=1&amp;sn=d7b68107b3e80d87974b02471a976b6c&amp;scene=21#wechat_redirect" target="_blank" data_ue_src="http://mp.weixin.qq.com/s?__biz=MzIxMTMzNTc5OA==&amp;mid=2247483656&amp;idx=1&amp;sn=d7b68107b3e80d87974b02471a976b6c&amp;scene=21#wechat_redirect" data-linktype="2">垫底辣妹</a>（嘉宾：冰心、龙源）</span></p>'
+    print(html.unescape(htmls))
     number = re.findall('[0-9]{3,}%s(.+?)' %link_href,html.unescape(htmls))
 
     print(number)
-    """
+    
     url = "oreilly.com"
     regex3 = re.compile(r"^((/|.)*(%s))" % url)
     regex4 = re.compile(r"^((/|.)*oreilly.com)")
@@ -55,5 +63,6 @@ for t in ttt:
     print(mo3.group())
     print(mo4.group())
     print(mo5.group())
-    """
+
     break
+"""
