@@ -45,12 +45,14 @@ for child in soup.descendants:
             print(child.a)
             showlist = []
             for string in child.strings:
-                if(string == ' ' or string == '"' or string =='&'):
+                if(string == ' ' or string == '"' or string =='&' or string =='“' or string == '”' or string == '（' or string =='）'):
                     continue
                 else:
                     showlist.append(string)
-            print(showlist)
-            print(len(showlist))
+#            print(showlist)
+            if(len(showlist)>3):
+                print(len(showlist))
+                print(showlist)
     #regex = re.compile("(>(\d{3,})\s{1,}< a href=(.*)\s{1,}target)")
     #print(regex.findall(t))
 
