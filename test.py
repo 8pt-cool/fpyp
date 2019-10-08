@@ -39,13 +39,18 @@ for child in soup.descendants:
         #print(child)
         if child.a is None:
             continue
+        if not child.a.has_attr('data-linktype'):
+            continue
         else:
             print(child.a)
-            list = []
+            showlist = []
             for string in child.strings:
-                if len(string) >2:
-                    list.append(string)
-            print(list)
+                if(string == ' ' or string == '"' or string =='&'):
+                    continue
+                else:
+                    showlist.append(string)
+            print(showlist)
+            print(len(showlist))
     #regex = re.compile("(>(\d{3,})\s{1,}< a href=(.*)\s{1,}target)")
     #print(regex.findall(t))
 
