@@ -70,7 +70,7 @@ if(1):
         itunes_subtitle_label = '<itunes:subtitle>' + title + '</itunes:subtitle>'
         itunes_summart_label = '<itunes:summary>欢迎关注“反派影评”公众号，可听到30分钟行业类谈话节目“反派马后炮”及短语音评电影的“电影耳旁风”，另外还可获取节目中提及的电影片单及其它延展信息。</itunes:summary>'
         itunes_image_label = ''
-        decription_label = '<description>欢迎关注“”公众号，可听到30分钟行业类谈话节目“反派马后炮”及短语音评电影的“电影耳旁风”，另外还可获取节目中提及的电影片单及其它延展信息。</description>'
+        decription_label = '<description>欢迎关注“反派影评”公众号，可听到30分钟行业类谈话节目“反派马后炮”及短语音评电影的“电影耳旁风”，另外还可获取节目中提及的电影片单及其它延展信息。</description>'
         item = '<item>' + title_label + enclousure_label + time_label + itunes_author_label + itunes_subtitle_label + itunes_summart_label + guid_label + link_label + decription_label + '</item>\n'
         file_rss.write(item)
 #       break
