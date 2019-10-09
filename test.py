@@ -42,14 +42,17 @@ for child in soup.descendants:
         if not child.a.has_attr('data-linktype'):
             continue
         else:
-            print(child.a)
+            print(child)
+            ttt=child.find_all('a',{'data-linktype':'2'})
+            for t in ttt:
+                print(t)
             showlist = []
             for string in child.strings:
                 if(string == ' ' or string == '"' or string =='&' or string =='“' or string == '”' or string == '（' or string =='）'):
                     continue
                 else:
                     showlist.append(string)
-#            print(showlist)
+            #print(showlist)
             if(len(showlist)>3):
                 print(len(showlist))
                 print(showlist)
