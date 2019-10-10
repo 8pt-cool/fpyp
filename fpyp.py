@@ -25,7 +25,6 @@ r= requests.get(
 #parse the show list page
 html=r.text
 soup =BeautifulSoup(html,'lxml')
-#ttt=soup.find_all('p',{'style':'white-space: normal;line-height: 25.6px;max-width: 100%;min-height: 1em;box-sizing: border-box !important;word-wrap: break-word !important;'})
 #write the channel info into rss file
 file_rss=open(rss,'w',encoding='UTF-8')
 file_head=open(head,'r',encoding='UTF-8')
