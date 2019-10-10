@@ -77,6 +77,9 @@ for child in reversed(child_list):
                             continue
                         audio_link = re.findall(r"\'(.+?)\'", line)[0]
                         print(audio_link)
+                    if 'msg_cdn_url' in line:
+                        cover_link = re.findall(r"\"(.+?)\"", line)[0]
+                        print(cover_link)
                     time_stamp = re.findall(r",n=\"(.+?)\"", line)
                     if (time_stamp):
                         time_local = time.localtime(int(time_stamp[0]))
@@ -89,10 +92,10 @@ for child in reversed(child_list):
                 enclousure_label = '<enclosure url="' + audio_link + '" type="audio/mpeg"/>'
                 itunes_author_label = '<itunes:author>波米和他的朋友们</itunes:author>'
                 itunes_subtitle_label = '<itunes:subtitle>' + title + '</itunes:subtitle>'
-                itunes_summart_label = '<itunes:summary>欢迎关注“反派影评”公众号，可听到30分钟行业类谈话节目“反派马后炮”及短语音评电影的“电影耳旁风”，另外还可获取节目中提及的电影片单及其它延展信息。</itunes:summary>'
-                itunes_image_label = ''
+                itunes_summary_label = '<itunes:summary>欢迎关注“反派影评”公众号，可听到30分钟行业类谈话节目“反派马后炮”及短语音评电影的“电影耳旁风”，另外还可获取节目中提及的电影片单及其它延展信息。</itunes:summary>'
+                itunes_image_label = '<itunes:image href="' + cover_link + '"/>'
                 decription_label = '<description>欢迎关注“反派影评”公众号，可听到30分钟行业类谈话节目“反派马后炮”及短语音评电影的“电影耳旁风”，另外还可获取节目中提及的电影片单及其它延展信息。</description>'
-                item = '<item>' + title_label + enclousure_label + time_label + itunes_author_label + itunes_subtitle_label + itunes_summart_label + guid_label + link_label + decription_label + '</item>\n'
+                item = '<item>' + title_label + enclousure_label + time_label + itunes_author_label + itunes_subtitle_label + itunes_summary_label + itunes_image_label + guid_label + link_label + decription_label + '</item>\n'
                 file_rss.write(item)
 file_rss.write('</channel>\n</rss>')
 file_rss.close()
