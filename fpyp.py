@@ -81,6 +81,10 @@ for child in reversed(child_list):
                             continue
                         audio_link = re.findall(r"\'(.+?)\'", line)[0]
                         print(audio_link)
+
+                    #                audio = MP3(str(audio_link))
+                    #                print(audio.info.length)
+                    #                audiofile = AudioFileClip(url)
                     time_stamp = re.findall(r",n=\"(.+?)\"", line)
                     if (time_stamp):
                         time_local = time.localtime(int(time_stamp[0]))
@@ -98,5 +102,9 @@ for child in reversed(child_list):
                 decription_label = '<description>欢迎关注“反派影评”公众号，可听到30分钟行业类谈话节目“反派马后炮”及短语音评电影的“电影耳旁风”，另外还可获取节目中提及的电影片单及其它延展信息。</description>'
                 item = '<item>' + title_label + enclousure_label + time_label + itunes_author_label + itunes_subtitle_label + itunes_summart_label + guid_label + link_label + decription_label + '</item>\n'
                 file_rss.write(item)
+                #<pubDate>Tue, 03 Jul 2018 04:23:44 GMT</pubDate>
+#<enclosure url="http://static.storyfm.cn/media/2017/07/Across_the_strait.mp3" length="26.6 MB" type="audio/mpeg"/>
+
+#       break
 file_rss.write('</channel>\n</rss>')
 file_rss.close()
