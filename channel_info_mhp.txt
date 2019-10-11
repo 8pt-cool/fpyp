@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+ encoding="UTF-8"	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+xmlns:rawvoice="http://www.rawvoice.com/rawvoiceRssModule/"
+xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
+>
+<channel>
+<atom:link href="http://www.ximalaya.com/album/4127591.xml" type="application/rss+xml" rel="self"/>
+<copyright>Copyright 波米</copyright>
+<language>zh-cn</language>
+<link>http://fanpaiyingping.com/</link>
+<title>反派影评-马后炮</title>
+<itunes:keywords/>
+<itunes:author>波米和他的朋友们</itunes:author>
+<itunes:subtitle>反派影评-马后炮</itunes:subtitle>
+<itunes:summary>
+苹果播客平台目前有5期节目因各类原因无法呈现：《树大招风》、“黄家少年与赵家少年”、《王牌特工2》、《出租车司机》（韩）以及《我不是药神》。 以上5期长节目欢迎关注“反派影评”公众号收听，公号内另可听到30分钟行业类谈话节目“反派马后炮”及短语音评电影的“电影耳旁风”，另外还可获取节目中提及的电影片单及其它延展信息。
+</itunes:summary>
+<itunes:summary>...</itunes:summary>
+<itunes:owner>
+<itunes:name>波米和他的朋友们</itunes:name>
+<itunes:email>wenxii_007@163.com </itunes:email>
+</itunes:owner>
+<itunes:owner>...</itunes:owner>
+<description>
+苹果播客平台目前有5期节目因各类原因无法呈现：《树大招风》、“黄家少年与赵家少年”、《王牌特工2》、《出租车司机》（韩）以及《我不是药神》。 以上5期长节目欢迎关注“反派影评”公众号收听，公号内另可听到30分钟行业类谈话节目“反派马后炮”及短语音评电影的“电影耳旁风”，另外还可获取节目中提及的电影片单及其它延展信息。
+</description>
+<description>...</description>
+<itunes:image href="http://fdfs.xmcdn.com/group45/M01/90/98/wKgKjluOa8HwyFvlAAF0MzN4APQ257.jpg"/>
+<itunes:category text="Film"/>
+<itunes:category text="Arts">
+<itunes:category text="Visual Arts"/>
+</itunes:category>
+<itunes:category text="Arts">...</itunes:category>
+<itunes:explicit>yes</itunes:explicit>

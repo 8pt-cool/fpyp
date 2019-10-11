@@ -9,8 +9,8 @@ import re
 import os
 import time
 
-rss='fpypepf.rss'
-head='channel_info_epf.txt'
+rss='fpypmhp.rss'
+head='channel_info_mhp.txt'
 #check if the file already exist
 if (os.path.exists(rss)):
     rss_new = 0
@@ -20,7 +20,7 @@ print(rss_new)
 ssl._create_default_https_context = ssl._create_unverified_context
 #open the show list page
 r= requests.get(
-    "https://mp.weixin.qq.com/s/iEXubHYcwT_AP5T7-TVD3g"
+    "https://mp.weixin.qq.com/s/mg83V4dKg0TkoZjCUlfKBA"
 )
 #parse the show list page
 html=r.text
@@ -66,9 +66,8 @@ for child in child_list:
                 title = t.get_text()
                 if title == ' ':
                     continue
-                title=title.replace('&','&amp;')
-                print(title)
                 #add episode seq in the title
+                title = title.replace('&', '&amp;')
                 title=showseq[0]+title
                 print(title)
                 # print(title)
