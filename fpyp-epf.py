@@ -20,7 +20,7 @@ print(rss_new)
 ssl._create_default_https_context = ssl._create_unverified_context
 #open the show list page
 r= requests.get(
-    "https://mp.weixin.qq.com/s/V6LfeY6Mki8VDyFYyfud2Q"
+    "https://mp.weixin.qq.com/s/iEXubHYcwT_AP5T7-TVD3g"
 )
 #parse the show list page
 html=r.text
@@ -35,7 +35,7 @@ file_head.close()
 child_list=[]
 for child in soup.descendants:
     child_list.append(child)
-for child in reversed(child_list):
+for child in child_list:
     #find all paragraph label
     if child.name =='p':
         #filter the p label without a
@@ -50,9 +50,18 @@ for child in reversed(child_list):
             for string in child.strings:
                 showseq.append(string)
                 break
+            '''
+            if(showseq[1]==' '):
+                title = showseq[0]+showseq[1]+showseq[2]
+            else:
+                title = showseq[0]+showseq[1]
+            print(title)
+            print(showseq) '''
+                #break
             #find all episode link in the paragraph, this is for the extension episode
+
             ttt=child.find_all('a',{'data-linktype':'2'})
-            for t in reversed(ttt):
+            for t in ttt:
                 #get title
                 title = t.get_text()
                 if title == ' ':
@@ -70,12 +79,10 @@ for child in reversed(child_list):
                 #get the audio link and publish time
                 for line in link_html.splitlines():
                     # print(line)
-                    if 'msg_source_url' in line:
-                        # print(line)
-                        if (title == '114 超人总动员2'):
-                            audio_link = 'http://image.kaolafm.net/mz/audios/201806/d96f030a-3eba-4447-9d47-0703332f07b4.mp3'
-                            continue
-                        audio_link = re.findall(r"\'(.+?)\'", line)[0]
+                    if 'voice_encode_fileid' in line:
+                        #print(line)
+                        audio_link = re.findall(r".*voice_encode_fileid=\"(.+?)\".*", line)[0]
+                        audio_link = 'http://res.wx.qq.com/voice/getvoice?mediaid='+ audio_link
                         print(audio_link)
                     if 'msg_cdn_url' in line:
                         cover_link = re.findall(r"\"(.+?)\"", line)[0]
