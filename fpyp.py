@@ -58,12 +58,13 @@ for child in reversed(child_list):
                 if title == ' ':
                     continue
                 #add episode seq in the title
-                title=showseq[0]+title
+                title=showseq[0]+'《'+title+'》'
                 print(title)
                 # print(title)
                 # print(t.get('href'))
                 #get the episode page link
                 link = t.get('href')
+                print(link)
                 #get all the contents in the page
                 link_request = requests.get(link)
                 link_html = link_request.text
@@ -72,7 +73,7 @@ for child in reversed(child_list):
                     # print(line)
                     if 'msg_source_url' in line:
                         # print(line)
-                        if (title == '114 超人总动员2'):
+                        if (title == '114 《超人总动员2》'):
                             audio_link = 'http://image.kaolafm.net/mz/audios/201806/d96f030a-3eba-4447-9d47-0703332f07b4.mp3'
                             continue
                         audio_link = re.findall(r"\'(.+?)\'", line)[0]
