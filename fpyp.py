@@ -8,7 +8,19 @@ from bs4 import BeautifulSoup
 import re
 import os
 import time
-
+def write_episode_info(file_rss,title,audio_link,cover_link,time_local):
+    title_label = '<title>' + title + '</title>'
+    link_label = '<link>' + audio_link + '</link>'
+    guid_label = '<guid>' + audio_link + '</guid>'
+    enclousure_label = '<enclosure url="' + audio_link + '" type="audio/mpeg"/>'
+    itunes_author_label = '<itunes:author>波米和他的朋友们</itunes:author>'
+    itunes_subtitle_label = '<itunes:subtitle>' + title + '</itunes:subtitle>'
+    itunes_summary_label = '<itunes:summary>欢迎关注“反派影评”公众号，可听到30分钟行业类谈话节目“反派马后炮”及短语音评电影的“电影耳旁风”，另外还可获取节目中提及的电影片单及其它延展信息。</itunes:summary>'
+    itunes_image_label = '<itunes:image href="' + cover_link + '"/>'
+    time_label = '<pubDate>' + time_local + '</pubDate>'
+    decription_label = '<description>欢迎关注“反派影评”公众号，可听到30分钟行业类谈话节目“反派马后炮”及短语音评电影的“电影耳旁风”，另外还可获取节目中提及的电影片单及其它延展信息。</description>'
+    item = '<item>' + title_label + enclousure_label + time_label + itunes_author_label + itunes_subtitle_label + itunes_summary_label + itunes_image_label + guid_label + link_label + decription_label + '</item>\n'
+    file_rss.write(item)
 rss='fpyp.rss'
 head='channel_info.txt'
 #check if the file already exist
@@ -77,26 +89,20 @@ for child in reversed(child_list):
                             audio_link = 'http://image.kaolafm.net/mz/audios/201806/d96f030a-3eba-4447-9d47-0703332f07b4.mp3'
                             continue
                         audio_link = re.findall(r"\'(.+?)\'", line)[0]
-                        print(audio_link)
+                        #print(audio_link)
                     if 'msg_cdn_url' in line:
                         cover_link = re.findall(r"\"(.+?)\"", line)[0]
-                        print(cover_link)
+                        #print(cover_link)
                     time_stamp = re.findall(r",n=\"(.+?)\"", line)
                     if (time_stamp):
                         time_local = time.localtime(int(time_stamp[0]))
                         time_local = time.strftime("%a, %d %b %Y %H:%M:%S +0800", time_local)
-                        time_label = '<pubDate>' + time_local + '</pubDate>'
+                        #time_label = '<pubDate>' + time_local + '</pubDate>'
                 #write the episode info in the rss file
-                title_label = '<title>' + title + '</title>'
-                link_label = '<link>' + audio_link + '</link>'
-                guid_label = '<guid>' + audio_link + '</guid>'
-                enclousure_label = '<enclosure url="' + audio_link + '" type="audio/mpeg"/>'
-                itunes_author_label = '<itunes:author>波米和他的朋友们</itunes:author>'
-                itunes_subtitle_label = '<itunes:subtitle>' + title + '</itunes:subtitle>'
-                itunes_summary_label = '<itunes:summary>欢迎关注“反派影评”公众号，可听到30分钟行业类谈话节目“反派马后炮”及短语音评电影的“电影耳旁风”，另外还可获取节目中提及的电影片单及其它延展信息。</itunes:summary>'
-                itunes_image_label = '<itunes:image href="' + cover_link + '"/>'
-                decription_label = '<description>欢迎关注“反派影评”公众号，可听到30分钟行业类谈话节目“反派马后炮”及短语音评电影的“电影耳旁风”，另外还可获取节目中提及的电影片单及其它延展信息。</description>'
-                item = '<item>' + title_label + enclousure_label + time_label + itunes_author_label + itunes_subtitle_label + itunes_summary_label + itunes_image_label + guid_label + link_label + decription_label + '</item>\n'
-                file_rss.write(item)
+                write_episode_info(file_rss,title,audio_link,cover_link,time_local)
+                #add episode 111(bullshit manual work)
+                print(showseq[0])
+                if(showseq[0]=='112 '):
+                    write_episode_info(file_rss, '111 《三和人才市场 中国日结1500日元的年轻人们》', 'http://image.kaolafm.net/mz/audios/201806/a91c444e-cc97-4d88-bf96-5beab506e95d.mp3', 'http://mmbiz.qpic.cn/mmbiz_jpg/xDSn38gQsJZQ7wvX84icCNerf5p1P0ib4cxwuGjdesPITQiahtttFAhO2pMt67pXjAjllCVRyJFicQCEMjXMUz70bg/0?wx_fmt=jpeg', 'Mon, 04 Jun 2018 19:04:15 +0800')
 file_rss.write('</channel>\n</rss>')
 file_rss.close()
