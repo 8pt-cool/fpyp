@@ -37,7 +37,7 @@ for child in soup.descendants:
     child_list.append(child)
 for child in child_list:
     #find all paragraph label
-    if child.name =='p':
+    if child.name =='p' or child.name =='section':
         #filter the p label without a
         if child.a is None:
             continue
