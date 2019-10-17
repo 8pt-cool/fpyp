@@ -76,6 +76,7 @@ for child in reversed(child_list):
                             audio_link = 'http://image.kaolafm.net/mz/audios/201806/d96f030a-3eba-4447-9d47-0703332f07b4.mp3'
                             continue
                         audio_link = re.findall(r"\'(.+?)\'", line)[0]
+                        print(audio_link)
 
 
 
