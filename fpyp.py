@@ -110,12 +110,11 @@ for child in reversed(child_list):
                         if (title == '114 《超人总动员2》'):
                             audio_link = 'http://image.kaolafm.net/mz/audios/201806/d96f030a-3eba-4447-9d47-0703332f07b4.mp3'
                             continue
-                        #audio_link = re.findall(r"\'(.+?)\'", line)[0]
+                        audio_link = re.findall(r"\'(.+?)\'", line)[0]
                         if get_correct_link(title_noseq):
                             audio_link = get_correct_link(title_noseq)
-                        else:
-                            audio_link = re.findall(r"\'(.+?)\'", line)[0]
-                        print(audio_link)
+                            continue
+                        # print(audio_link)
                     if 'msg_cdn_url' in line:
                         cover_link = re.findall(r"\"(.+?)\"", line)[0]
                         # print(cover_link)

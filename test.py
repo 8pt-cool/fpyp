@@ -9,6 +9,7 @@ import re
 import os
 import time
 import html
+import librosa
 
 
 
@@ -76,11 +77,10 @@ for child in reversed(child_list):
                             audio_link = 'http://image.kaolafm.net/mz/audios/201806/d96f030a-3eba-4447-9d47-0703332f07b4.mp3'
                             continue
                         audio_link = re.findall(r"\'(.+?)\'", line)[0]
+                        duration = librosa.get_duration(filename=audio_link)
+                        print(duration)
 
-                        if 'kaola' in audio_link:
-                            continue
-                        else:
-                            print(audio_link)
+
 
 
 
