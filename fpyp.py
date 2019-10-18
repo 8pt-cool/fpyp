@@ -25,6 +25,24 @@ def write_episode_info(file_rss, title, audio_link, cover_link, time_local):
     file_rss.write(item)
 
 
+def get_correct_link(seq):
+    link_dic = {
+        '异形：契约': 'http://audio.xmcdn.com/group33/M00/53/30/wKgJnVmbIMKiuLtUA3lZv1QmE44924.m4a',
+        '夜行动物': 'http://audio.xmcdn.com/group24/M06/25/FB/wKgJMFhrgTvzPSUOAq2mrxJdruI201.m4a',
+        '比利·林恩的中场战事': 'http://audio.xmcdn.com/group21/M03/65/A0/wKgJKFg3GL-A-EIfA7wMsbItbYI100.m4a',
+        '屏住呼吸': 'https://s3-ap-southeast-1.amazonaws.com/fpyp/DontBreath.mp3',
+        '奇异博士': 'http://music.163.com/#/dj?id=796114662',
+        '第69届戛纳电影节专题': 'http://audio.xmcdn.com/group15/M07/7C/C2/wKgDaFdJawSi30SZAnVujqX1xPw331.m4a',
+        '美国队长3': 'http://audio.xmcdn.com/group12/M09/69/BC/wKgDW1c3qjfgq14lAs7aJxkrOZs680.m4a'
+    }
+    print(seq)
+    if link_dic.get(seq) is not None:
+        print(link_dic.get(seq))
+        return link_dic.get(seq)
+    else:
+        return False
+
+
 rss = 'fpyp.rss'
 head = 'channel_info.txt'
 # check if the file already exist
@@ -70,17 +88,17 @@ for child in reversed(child_list):
             ttt = child.find_all('a', {'data-linktype': '2'})
             for t in reversed(ttt):
                 # get title
-                title = t.get_text()
-                if title == ' ':
+                title_noseq = t.get_text()
+                if title_noseq == ' ':
                     continue
                 # add episode seq in the title
-                title = showseq[0] + '《' + title + '》'
+                title = showseq[0] + '《' + title_noseq + '》'
                 print(title)
                 # print(title)
                 # print(t.get('href'))
                 # get the episode page link
                 link = t.get('href')
-                print(link)
+                # print(link)
                 # get all the contents in the page
                 link_request = requests.get(link)
                 link_html = link_request.text
@@ -92,8 +110,12 @@ for child in reversed(child_list):
                         if (title == '114 《超人总动员2》'):
                             audio_link = 'http://image.kaolafm.net/mz/audios/201806/d96f030a-3eba-4447-9d47-0703332f07b4.mp3'
                             continue
-                        audio_link = re.findall(r"\'(.+?)\'", line)[0]
-                        # print(audio_link)
+                        #audio_link = re.findall(r"\'(.+?)\'", line)[0]
+                        if get_correct_link(title_noseq):
+                            audio_link = get_correct_link(title_noseq)
+                        else:
+                            audio_link = re.findall(r"\'(.+?)\'", line)[0]
+                        print(audio_link)
                     if 'msg_cdn_url' in line:
                         cover_link = re.findall(r"\"(.+?)\"", line)[0]
                         # print(cover_link)

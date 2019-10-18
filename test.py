@@ -50,20 +50,20 @@ for child in reversed(child_list):
             for string in child.strings:
                 showseq.append(string)
                 break
-            print(showseq)
+            #print(showseq)
             ttt=child.find_all('a',{'data-linktype':'2'})
             for t in ttt:
-                title = t.get_text()
-                if title == ' ':
+                title_noseq = t.get_text()
+                if title_noseq == ' ':
                     continue
                 # add episode seq in the title
-                title = showseq[0] + '《' + title + '》'
+                title_noseq = showseq[0] + '《' + title + '》'
                 print(title)
                 # print(title)
                 # print(t.get('href'))
                 # get the episode page link
                 link = t.get('href')
-                print(link)
+                #print(link)
                 # get all the contents in the page
                 link_request = requests.get(link)
                 link_html = link_request.text
@@ -71,12 +71,16 @@ for child in reversed(child_list):
                 for line in link_html.splitlines():
                     # print(line)
                     if 'msg_source_url' in line:
-                        print(line)
+                        #print(line)
                         if (title == '114 《超人总动员2》'):
                             audio_link = 'http://image.kaolafm.net/mz/audios/201806/d96f030a-3eba-4447-9d47-0703332f07b4.mp3'
                             continue
                         audio_link = re.findall(r"\'(.+?)\'", line)[0]
-                        print(audio_link)
+
+                        if 'kaola' in audio_link:
+                            continue
+                        else:
+                            print(audio_link)
 
 
 
