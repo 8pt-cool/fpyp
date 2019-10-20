@@ -35,7 +35,7 @@ def get_correct_link(seq):
         '第69届戛纳电影节专题': 'http://audio.xmcdn.com/group15/M07/7C/C2/wKgDaFdJawSi30SZAnVujqX1xPw331.m4a',
         '美国队长3': 'http://audio.xmcdn.com/group12/M09/69/BC/wKgDW1c3qjfgq14lAs7aJxkrOZs680.m4a'
     }
-    print(seq)
+    # print(seq)
     if link_dic.get(seq) is not None:
         print(link_dic.get(seq))
         return link_dic.get(seq)
@@ -126,7 +126,7 @@ for child in reversed(child_list):
                 # write the episode info in the rss file
                 write_episode_info(file_rss, title, audio_link, cover_link, time_local)
                 # add episode 111(bullshit manual work)
-                print(showseq[0])
+                # print(showseq[0])
                 if showseq[0] == '112 ':
                     write_episode_info(file_rss, '111 《三和人才市场 中国日结1500日元的年轻人们》',
                                        'http://image.kaolafm.net/mz/audios/201806/a91c444e-cc97-4d88-bf96-5beab506e95d.mp3',
