@@ -82,7 +82,7 @@ for child in reversed(child_list):
             # get the sequence number of the episode
             showseq = []
             for string in child.strings:
-                showseq.append(string)
+                showseq.append(string.strip())
                 break
             # find all episode link in the paragraph, this is for the extension episode
             ttt = child.find_all('a', {'data-linktype': '2'})
@@ -92,7 +92,7 @@ for child in reversed(child_list):
                 if title_noseq == ' ':
                     continue
                 # add episode seq in the title
-                title = showseq[0] + '《' + title_noseq + '》'
+                title = showseq[0] + '《' + title_noseq.strip() + '》'
                 print(title)
                 # print(title)
                 # print(t.get('href'))
@@ -107,7 +107,7 @@ for child in reversed(child_list):
                     # print(line)
                     if 'msg_source_url' in line:
                         # print(line)
-                        if (title == '114 《超人总动员2》'):
+                        if (title == '114《超人总动员2》'):
                             audio_link = 'http://image.kaolafm.net/mz/audios/201806/d96f030a-3eba-4447-9d47-0703332f07b4.mp3'
                             continue
                         audio_link = re.findall(r"\'(.+?)\'", line)[0]

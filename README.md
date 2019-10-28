@@ -15,4 +15,4 @@ How to run this script.
 
 Then you will get one file which name is : fpyp.rss. Upload this file to the website, the audience can subscription this rss by their apps.
 
-The code files fpyp-epf.py and fpyp-mhp and rss files fpypepf.rss fpypmhp.rss are for 耳旁风/马后炮 episodes, you can ignore these files.1
+The code files fpyp-epf.py and fpyp-mhp and rss files fpypepf.rss fpypmhp.rss are for 耳旁风/马后炮 episodes, you can ignore these files.
