@@ -37,7 +37,7 @@ for child in soup.descendants:
     child_list.append(child)
 for child in child_list:
     #find all paragraph label
-    if child.name =='p':
+    if child.name =='p' or child.name =='section':
         #filter the p label without a
         if child.a is None:
             continue
@@ -48,7 +48,7 @@ for child in child_list:
             #get the sequence number of the episode
             showseq = []
             for string in child.strings:
-                showseq.append(string)
+                showseq.append(string.strip())
                 break
             '''
             if(showseq[1]==' '):
@@ -68,7 +68,7 @@ for child in child_list:
                     continue
                 #add episode seq in the title
                 title = title.replace('&', '&amp;')
-                title=showseq[0]+title
+                title = showseq[0]+' '+title.strip()
                 print(title)
                 # print(title)
                 # print(t.get('href'))

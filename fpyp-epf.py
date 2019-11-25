@@ -48,7 +48,7 @@ for child in child_list:
             #get the sequence number of the episode
             showseq = []
             for string in child.strings:
-                showseq.append(string)
+                showseq.append(string.strip())
                 break
             '''
             if(showseq[1]==' '):
@@ -66,10 +66,10 @@ for child in child_list:
                 title = t.get_text()
                 if title == ' ':
                     continue
-                title=title.replace('&','&amp;')
+                title = title.replace('&','&amp;')
                 print(title)
                 #add episode seq in the title
-                title=showseq[0]+title
+                title = showseq[0]+' '+title.strip()
                 print(title)
                 # print(title)
                 # print(t.get('href'))
